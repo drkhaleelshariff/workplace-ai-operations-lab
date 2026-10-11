@@ -1,0 +1,6 @@
+{"timestamp_utc": "2026-10-11T16:43:28.083647+00:00", "request_id": "626ff33e75694c4898a3dc472bd9b706", "event": "retrieval_completed", "status": "ok", "error_code": null, "result_count": 2, "elapsed_ms": 7.19}
+{"timestamp_utc": "2026-10-11T16:43:28.106709+00:00", "request_id": "1f03226a0da2452f88fecd00f77fcb62", "event": "retrieval_completed", "status": "no_match", "error_code": null, "result_count": 0, "elapsed_ms": 3.624}
+{"timestamp_utc": "2026-10-11T16:43:28.107709+00:00", "request_id": "db50a531f3be4d3d8dd94541da64c807", "event": "retrieval_completed", "status": "error", "error_code": "SOURCE_UNAVAILABLE_OR_INVALID", "result_count": 0, "elapsed_ms": 0.371}
+{"timestamp_utc": "2026-10-11T16:43:28.112712+00:00", "request_id": "225a5bbc844c4fb7acf1bb82a7bb592e", "event": "retrieval_completed", "status": "error", "error_code": "INVALID_CONFIGURATION", "result_count": 0, "elapsed_ms": 0.009}
+{"timestamp_utc": "2026-10-11T16:43:28.113713+00:00", "request_id": "474f4cd868104806b95408eb9001db7c", "event": "retrieval_completed", "status": "error", "error_code": "INVALID_CONFIGURATION", "result_count": 0, "elapsed_ms": 0.006}
+{"timestamp_utc": "2026-10-11T16:43:28.114712+00:00", "request_id": "d056acb68be4431c80cce089f3ae7e17", "event": "retrieval_completed", "status": "error", "error_code": "INVALID_QUERY", "result_count": 0, "elapsed_ms": 0.008}
