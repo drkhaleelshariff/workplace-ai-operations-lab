@@ -77,9 +77,13 @@ Open 01_retrieval_baseline.ipynb.
 Select Kernel → Restart Kernel and Run All Cells.
 Launch Jupyter from the project root so relative paths resolve correctly.
 
-The existing environment was checked by restarting the kernel and
-rerunning the notebook. Installation into a second environment has
-not yet been tested.
+On October 11, 2026, the notebook completed successfully in a fresh
+GitHub clone with a separate Python 3.12.10 virtual environment on
+the same Windows laptop, after correcting two rerun blockers:
+a fixed folder-name requirement and a README file-existence check.
+The baseline and expansion comparison remained 4/4 and 2/4.
+This verifies a second environment on the same machine, not
+cross-platform reproducibility.
 
 If a document-content mismatch is reported, inspect the existing file
 before changing it. The notebook deliberately avoids overwriting

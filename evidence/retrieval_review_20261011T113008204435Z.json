@@ -1,0 +1,97 @@
+{
+  "created_at_utc": "2026-10-11T11:30:08.204435+00:00",
+  "experiment": "Sentence retrieval using unique word overlap",
+  "top_k": 2,
+  "indexed_passage_count": 9,
+  "review_type": "manual reference judgments",
+  "limitations": [
+    "No LLM or answer-generation component.",
+    "No automatic answerability assessment.",
+    "Word-overlap scores are not confidence probabilities.",
+    "Only three questions against synthetic documents."
+  ],
+  "cases": [
+    {
+      "question": "How many annual leave days do full-time employees receive?",
+      "expected_behavior": "answer",
+      "reference_answer": "20 days of annual leave per calendar year.",
+      "review_reason": "leave_policy:1 explicitly states the entitlement for full-time employees.",
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 7,
+          "matched_words": [
+            "annual",
+            "days",
+            "employees",
+            "full",
+            "leave",
+            "receive",
+            "time"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "question": "What is the monthly home internet reimbursement amount?",
+      "expected_behavior": "abstain",
+      "reference_answer": null,
+      "review_reason": "remote_work_policy:3 does not provide a reimbursement amount. This does not imply that reimbursement is zero.",
+      "retrieved_passages": [
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:3",
+          "text": "This policy does not specify reimbursement for home internet expenses.",
+          "score": 3,
+          "matched_words": [
+            "home",
+            "internet",
+            "reimbursement"
+          ]
+        }
+      ]
+    },
+    {
+      "question": "How many annual leave days do contractors receive?",
+      "expected_behavior": "abstain",
+      "reference_answer": null,
+      "review_reason": "leave_policy:1 covers full-time employees. It does not establish an entitlement for contractors.",
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 4,
+          "matched_words": [
+            "annual",
+            "days",
+            "leave",
+            "receive"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    }
+  ]
+}
