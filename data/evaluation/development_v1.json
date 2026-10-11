@@ -1,0 +1,111 @@
+{
+  "schema_version": "1.0",
+  "dataset_version": "1.0",
+  "split": "development",
+  "label_source": "Manually specified and reviewed in this training lab",
+  "passage_id_scheme": "Filename stem plus policy-body line number",
+  "limitations": [
+    "All questions have already been examined during development.",
+    "This is not a held-out test set.",
+    "Expected behavior is a reference label, not a system prediction.",
+    "Diagnostic passages do not supply the requested answer.",
+    "Passage IDs must be reviewed if document lines change."
+  ],
+  "cases": [
+    {
+      "id": "DEV-001",
+      "question": "How many annual leave days do full-time employees receive?",
+      "expected_behavior": "answer",
+      "reference_answer": "Full-time employees receive 20 days per calendar year.",
+      "answer_supporting_passage_ids": [
+        "leave_policy:1"
+      ],
+      "diagnostic_passage_ids": [],
+      "reason": "The policy explicitly states the entitlement."
+    },
+    {
+      "id": "DEV-002",
+      "question": "What is the monthly home internet reimbursement amount?",
+      "expected_behavior": "abstain",
+      "reference_answer": null,
+      "answer_supporting_passage_ids": [],
+      "diagnostic_passage_ids": [
+        "remote_work_policy:3"
+      ],
+      "reason": "No amount is specified; this does not establish zero reimbursement."
+    },
+    {
+      "id": "DEV-003",
+      "question": "How many annual leave days do contractors receive?",
+      "expected_behavior": "abstain",
+      "reference_answer": null,
+      "answer_supporting_passage_ids": [],
+      "diagnostic_passage_ids": [
+        "leave_policy:1"
+      ],
+      "reason": "The retrieved entitlement covers full-time employees, not contractors."
+    },
+    {
+      "id": "DEV-004",
+      "question": "What is the yearly PTO allowance for staff?",
+      "expected_behavior": "qualified_answer",
+      "reference_answer": "For full-time employees, the policy provides 20 days per calendar year.",
+      "answer_supporting_passage_ids": [
+        "leave_policy:1"
+      ],
+      "diagnostic_passage_ids": [],
+      "reason": "Assume PTO means annual leave in this lab; preserve the full-time scope."
+    },
+    {
+      "id": "DEV-005",
+      "question": "What is the cafeteria breakfast menu?",
+      "expected_behavior": "abstain",
+      "reference_answer": null,
+      "answer_supporting_passage_ids": [],
+      "diagnostic_passage_ids": [],
+      "reason": "The supplied documents do not describe a cafeteria menu."
+    },
+    {
+      "id": "DEV-006",
+      "question": "Where should staff submit annual leave requests?",
+      "expected_behavior": "answer",
+      "reference_answer": "Annual leave requests must be submitted through the employee portal.",
+      "answer_supporting_passage_ids": [
+        "leave_policy:2"
+      ],
+      "diagnostic_passage_ids": [],
+      "reason": "The policy explicitly identifies the submission channel."
+    },
+    {
+      "id": "DEV-007",
+      "question": "Who approves remote work arrangements?",
+      "expected_behavior": "answer",
+      "reference_answer": "The employee's manager must approve the arrangement.",
+      "answer_supporting_passage_ids": [
+        "remote_work_policy:2"
+      ],
+      "diagnostic_passage_ids": [],
+      "reason": "The policy explicitly identifies the approver."
+    },
+    {
+      "id": "DEV-008",
+      "question": "What should staff do if a company laptop is lost?",
+      "expected_behavior": "answer",
+      "reference_answer": "Report the lost company laptop to the IT service desk immediately.",
+      "answer_supporting_passage_ids": [
+        "it_support_policy:1"
+      ],
+      "diagnostic_passage_ids": [],
+      "reason": "The policy explicitly states the required action."
+    },
+    {
+      "id": "DEV-009",
+      "question": "What is the yearly bonus allowance for staff?",
+      "expected_behavior": "abstain",
+      "reference_answer": null,
+      "answer_supporting_passage_ids": [],
+      "diagnostic_passage_ids": [],
+      "reason": "No bonus entitlement is established by the supplied documents."
+    }
+  ]
+}

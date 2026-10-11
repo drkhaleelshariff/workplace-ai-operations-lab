@@ -1,0 +1,522 @@
+{
+  "created_at_utc": "2026-10-11T16:27:39.831793+00:00",
+  "dataset_version": "1.0",
+  "split": "development",
+  "dataset_sha256": "7163a1f584a7df8806214b263ab7a79e0f25e82ec8ba45e934a04193751d020f",
+  "source_sha256": {
+    "it_support_policy.txt": "3d231f717889b1e227cf328b5e4604c2753cff3ac857b92ab50e84d9384215c8",
+    "leave_policy.txt": "0f3dd95bebc0db0661ec064ca315fd3647e8b6989ba56c4384c7350ce75d892d",
+    "remote_work_policy.txt": "e612f3db54639185352e47172b611477f8a66840c37750003193f0e91b222882"
+  },
+  "environment": {
+    "python": "3.12.10",
+    "platform": "Windows-11-10.0.22621-SP0"
+  },
+  "retrieval_configuration": {
+    "top_k": 2,
+    "scoring": "Unique query/passage token overlap",
+    "tie_break": "Passage ID ascending",
+    "token_pattern": "[a-z0-9]+",
+    "stop_words": [
+      "a",
+      "an",
+      "and",
+      "are",
+      "do",
+      "does",
+      "for",
+      "how",
+      "in",
+      "is",
+      "of",
+      "on",
+      "or",
+      "per",
+      "the",
+      "to",
+      "what",
+      "which",
+      "with"
+    ],
+    "query_expansions": {
+      "pto": [
+        "annual",
+        "leave"
+      ],
+      "yearly": [
+        "annual"
+      ],
+      "staff": [
+        "employees"
+      ]
+    }
+  },
+  "summary": {
+    "baseline": {
+      "answerable_cases": 5,
+      "top1_supporting_hits": 4,
+      "top2_supporting_hits": 4,
+      "abstention_cases": 4,
+      "abstention_cases_with_retrieval": 2
+    },
+    "expanded": {
+      "answerable_cases": 5,
+      "top1_supporting_hits": 4,
+      "top2_supporting_hits": 5,
+      "abstention_cases": 4,
+      "abstention_cases_with_retrieval": 3
+    }
+  },
+  "results": [
+    {
+      "method": "baseline",
+      "case_id": "DEV-001",
+      "question": "How many annual leave days do full-time employees receive?",
+      "expected_behavior": "answer",
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 7,
+          "matched_words": [
+            "annual",
+            "days",
+            "employees",
+            "full",
+            "leave",
+            "receive",
+            "time"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "case_id": "DEV-002",
+      "question": "What is the monthly home internet reimbursement amount?",
+      "expected_behavior": "abstain",
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "retrieved_passages": [
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:3",
+          "text": "This policy does not specify reimbursement for home internet expenses.",
+          "score": 3,
+          "matched_words": [
+            "home",
+            "internet",
+            "reimbursement"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "case_id": "DEV-003",
+      "question": "How many annual leave days do contractors receive?",
+      "expected_behavior": "abstain",
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 4,
+          "matched_words": [
+            "annual",
+            "days",
+            "leave",
+            "receive"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "case_id": "DEV-004",
+      "question": "What is the yearly PTO allowance for staff?",
+      "expected_behavior": "qualified_answer",
+      "top1_supporting_hit": false,
+      "top2_supporting_hit": false,
+      "retrieved_passages": []
+    },
+    {
+      "method": "baseline",
+      "case_id": "DEV-005",
+      "question": "What is the cafeteria breakfast menu?",
+      "expected_behavior": "abstain",
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "retrieved_passages": []
+    },
+    {
+      "method": "baseline",
+      "case_id": "DEV-006",
+      "question": "Where should staff submit annual leave requests?",
+      "expected_behavior": "answer",
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 3,
+          "matched_words": [
+            "annual",
+            "leave",
+            "requests"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "case_id": "DEV-007",
+      "question": "Who approves remote work arrangements?",
+      "expected_behavior": "answer",
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:2",
+          "text": "The employee's manager must approve the remote work arrangement.",
+          "score": 2,
+          "matched_words": [
+            "remote",
+            "work"
+          ]
+        },
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:1",
+          "text": "Eligible employees may work remotely up to two days per week.",
+          "score": 1,
+          "matched_words": [
+            "work"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "case_id": "DEV-008",
+      "question": "What should staff do if a company laptop is lost?",
+      "expected_behavior": "answer",
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "it_support_policy.txt",
+          "passage_id": "it_support_policy:1",
+          "text": "Employees must report lost company laptops to the IT service desk immediately.",
+          "score": 2,
+          "matched_words": [
+            "company",
+            "lost"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "case_id": "DEV-009",
+      "question": "What is the yearly bonus allowance for staff?",
+      "expected_behavior": "abstain",
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "retrieved_passages": []
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-001",
+      "question": "How many annual leave days do full-time employees receive?",
+      "expected_behavior": "answer",
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 7,
+          "matched_words": [
+            "annual",
+            "days",
+            "employees",
+            "full",
+            "leave",
+            "receive",
+            "time"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-002",
+      "question": "What is the monthly home internet reimbursement amount?",
+      "expected_behavior": "abstain",
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "retrieved_passages": [
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:3",
+          "text": "This policy does not specify reimbursement for home internet expenses.",
+          "score": 3,
+          "matched_words": [
+            "home",
+            "internet",
+            "reimbursement"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-003",
+      "question": "How many annual leave days do contractors receive?",
+      "expected_behavior": "abstain",
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 4,
+          "matched_words": [
+            "annual",
+            "days",
+            "leave",
+            "receive"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-004",
+      "question": "What is the yearly PTO allowance for staff?",
+      "expected_behavior": "qualified_answer",
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 3,
+          "matched_words": [
+            "annual",
+            "employees",
+            "leave"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-005",
+      "question": "What is the cafeteria breakfast menu?",
+      "expected_behavior": "abstain",
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "retrieved_passages": []
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-006",
+      "question": "Where should staff submit annual leave requests?",
+      "expected_behavior": "answer",
+      "top1_supporting_hit": false,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 3,
+          "matched_words": [
+            "annual",
+            "employees",
+            "leave"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 3,
+          "matched_words": [
+            "annual",
+            "leave",
+            "requests"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-007",
+      "question": "Who approves remote work arrangements?",
+      "expected_behavior": "answer",
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:2",
+          "text": "The employee's manager must approve the remote work arrangement.",
+          "score": 2,
+          "matched_words": [
+            "remote",
+            "work"
+          ]
+        },
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:1",
+          "text": "Eligible employees may work remotely up to two days per week.",
+          "score": 1,
+          "matched_words": [
+            "work"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-008",
+      "question": "What should staff do if a company laptop is lost?",
+      "expected_behavior": "answer",
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "retrieved_passages": [
+        {
+          "source": "it_support_policy.txt",
+          "passage_id": "it_support_policy:1",
+          "text": "Employees must report lost company laptops to the IT service desk immediately.",
+          "score": 3,
+          "matched_words": [
+            "company",
+            "employees",
+            "lost"
+          ]
+        },
+        {
+          "source": "it_support_policy.txt",
+          "passage_id": "it_support_policy:3",
+          "text": "Employees must not share passwords with colleagues or IT support personnel.",
+          "score": 1,
+          "matched_words": [
+            "employees"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "case_id": "DEV-009",
+      "question": "What is the yearly bonus allowance for staff?",
+      "expected_behavior": "abstain",
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "employees"
+          ]
+        },
+        {
+          "source": "it_support_policy.txt",
+          "passage_id": "it_support_policy:1",
+          "text": "Employees must report lost company laptops to the IT service desk immediately.",
+          "score": 1,
+          "matched_words": [
+            "employees"
+          ]
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Nine previously examined development cases.",
+    "Five answerable cases, including one qualified-answer case.",
+    "Supporting-passage hits do not measure answer correctness.",
+    "Retrieval on abstention cases does not measure abstention behavior.",
+    "No LLM or automatic answerability component was evaluated."
+  ]
+}
