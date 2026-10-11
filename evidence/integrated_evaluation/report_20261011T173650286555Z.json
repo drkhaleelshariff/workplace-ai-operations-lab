@@ -1,0 +1,305 @@
+{
+  "created_at_utc": "2026-10-11T17:36:50.286555+00:00",
+  "role": "employee",
+  "identity_mode": "simulated role input",
+  "dataset_version": "1.0",
+  "split": "development",
+  "passage_prefix_mapping": {
+    "leave_policy": "HR-001",
+    "remote_work_policy": "HR-002",
+    "it_support_policy": "IT-001"
+  },
+  "file_fingerprints": {
+    "module": {
+      "path": "workplace_pipeline.py",
+      "sha256": "cf6ca783e3a693473ab95c84a63bb23dbb78761a0a018869b09b705ad2901321"
+    },
+    "dataset": {
+      "path": "data/evaluation/development_v1.json",
+      "sha256": "7163a1f584a7df8806214b263ab7a79e0f25e82ec8ba45e934a04193751d020f"
+    },
+    "configuration": {
+      "path": "config/integrated/pipeline_v1.json",
+      "sha256": "bdcd0025319444eda04dcf10296ba70dcffac3d63576eccc4255c77034eb023c"
+    },
+    "policy": {
+      "path": "data/access_control/policy_v1.json",
+      "sha256": "c1f201b076628a574905698153586aadc0727a704527f27031bcf29ed1fdc5e0"
+    },
+    "document:HR-001": {
+      "path": "data/synthetic/leave_policy.txt",
+      "sha256": "0f3dd95bebc0db0661ec064ca315fd3647e8b6989ba56c4384c7350ce75d892d"
+    },
+    "document:HR-002": {
+      "path": "data/synthetic/remote_work_policy.txt",
+      "sha256": "e612f3db54639185352e47172b611477f8a66840c37750003193f0e91b222882"
+    },
+    "document:IT-001": {
+      "path": "data/synthetic/it_support_policy.txt",
+      "sha256": "3d231f717889b1e227cf328b5e4604c2753cff3ac857b92ab50e84d9384215c8"
+    }
+  },
+  "request_log": {
+    "path": "evidence/integrated_evaluation/requests_e50d0dd6116a4d41822f5875f4960f4d.jsonl",
+    "sha256": "23a610f03dd1a93a20517d7be6f4cb6527c2d8e7b29eebb488bb6fdb6502d50e",
+    "verified_events": 9
+  },
+  "summary": {
+    "answerable_cases": 5,
+    "top1_supporting_hits": 4,
+    "top2_supporting_hits": 4,
+    "abstention_cases": 4,
+    "abstention_cases_with_retrieval": 2
+  },
+  "request_status_counts": {
+    "ok": 6,
+    "no_match": 3
+  },
+  "results": [
+    {
+      "case_id": "DEV-001",
+      "expected_behavior": "answer",
+      "supporting_passage_ids": [
+        "HR-001:1"
+      ],
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.151870+00:00",
+        "request_id": "9bf0976454d14f2f8361e59c0f0e9ccf",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "ok",
+        "error_code": null,
+        "result_count": 2,
+        "elapsed_ms": 6.655,
+        "results": [
+          {
+            "document_id": "HR-001",
+            "passage_id": "HR-001:1",
+            "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+            "score": 7
+          },
+          {
+            "document_id": "HR-001",
+            "passage_id": "HR-001:2",
+            "text": "Annual leave requests must be submitted through the employee portal.",
+            "score": 2
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "DEV-002",
+      "expected_behavior": "abstain",
+      "supporting_passage_ids": [],
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.157870+00:00",
+        "request_id": "bd2c4ecc28b046ac9f4ac943e7d4ecaa",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "ok",
+        "error_code": null,
+        "result_count": 1,
+        "elapsed_ms": 4.916,
+        "results": [
+          {
+            "document_id": "HR-002",
+            "passage_id": "HR-002:3",
+            "text": "This policy does not specify reimbursement for home internet expenses.",
+            "score": 3
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "DEV-003",
+      "expected_behavior": "abstain",
+      "supporting_passage_ids": [],
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.162870+00:00",
+        "request_id": "a6be71f54e2041e58ed0f1167943f789",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "ok",
+        "error_code": null,
+        "result_count": 2,
+        "elapsed_ms": 4.54,
+        "results": [
+          {
+            "document_id": "HR-001",
+            "passage_id": "HR-001:1",
+            "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+            "score": 4
+          },
+          {
+            "document_id": "HR-001",
+            "passage_id": "HR-001:2",
+            "text": "Annual leave requests must be submitted through the employee portal.",
+            "score": 2
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "DEV-004",
+      "expected_behavior": "qualified_answer",
+      "supporting_passage_ids": [
+        "HR-001:1"
+      ],
+      "top1_supporting_hit": false,
+      "top2_supporting_hit": false,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.188028+00:00",
+        "request_id": "685f83ea769e49c9a4062c2da36abc65",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "no_match",
+        "error_code": null,
+        "result_count": 0,
+        "elapsed_ms": 14.295,
+        "results": []
+      }
+    },
+    {
+      "case_id": "DEV-005",
+      "expected_behavior": "abstain",
+      "supporting_passage_ids": [],
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.197027+00:00",
+        "request_id": "eb66884032ff443e94dd22f5cbc267d6",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "no_match",
+        "error_code": null,
+        "result_count": 0,
+        "elapsed_ms": 7.834,
+        "results": []
+      }
+    },
+    {
+      "case_id": "DEV-006",
+      "expected_behavior": "answer",
+      "supporting_passage_ids": [
+        "HR-001:2"
+      ],
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.203061+00:00",
+        "request_id": "f0af59c79a2d4b0ca367bd7f6771ebb9",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "ok",
+        "error_code": null,
+        "result_count": 2,
+        "elapsed_ms": 6.104,
+        "results": [
+          {
+            "document_id": "HR-001",
+            "passage_id": "HR-001:2",
+            "text": "Annual leave requests must be submitted through the employee portal.",
+            "score": 3
+          },
+          {
+            "document_id": "HR-001",
+            "passage_id": "HR-001:1",
+            "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+            "score": 2
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "DEV-007",
+      "expected_behavior": "answer",
+      "supporting_passage_ids": [
+        "HR-002:2"
+      ],
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.210025+00:00",
+        "request_id": "f972aaa420d74b81b1aadbb84d1491b4",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "ok",
+        "error_code": null,
+        "result_count": 2,
+        "elapsed_ms": 5.555,
+        "results": [
+          {
+            "document_id": "HR-002",
+            "passage_id": "HR-002:2",
+            "text": "The employee's manager must approve the remote work arrangement.",
+            "score": 2
+          },
+          {
+            "document_id": "HR-002",
+            "passage_id": "HR-002:1",
+            "text": "Eligible employees may work remotely up to two days per week.",
+            "score": 1
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "DEV-008",
+      "expected_behavior": "answer",
+      "supporting_passage_ids": [
+        "IT-001:1"
+      ],
+      "top1_supporting_hit": true,
+      "top2_supporting_hit": true,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.215021+00:00",
+        "request_id": "10a9c87cd9114973ae2573275d40bf6d",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "ok",
+        "error_code": null,
+        "result_count": 1,
+        "elapsed_ms": 4.545,
+        "results": [
+          {
+            "document_id": "IT-001",
+            "passage_id": "IT-001:1",
+            "text": "Employees must report lost company laptops to the IT service desk immediately.",
+            "score": 2
+          }
+        ]
+      }
+    },
+    {
+      "case_id": "DEV-009",
+      "expected_behavior": "abstain",
+      "supporting_passage_ids": [],
+      "top1_supporting_hit": null,
+      "top2_supporting_hit": null,
+      "response": {
+        "timestamp_utc": "2026-10-11T17:36:50.220026+00:00",
+        "request_id": "a12e11567e214c959f9e67404c7e2ff0",
+        "event": "retrieval_completed",
+        "config_version": "1",
+        "status": "no_match",
+        "error_code": null,
+        "result_count": 0,
+        "elapsed_ms": 4.377,
+        "results": []
+      }
+    }
+  ],
+  "limitations": [
+    "Previously examined development cases, not held-out testing.",
+    "Retrieval support metrics do not measure answer correctness.",
+    "No LLM or automatic abstention component.",
+    "Matching baseline totals do not prove identical rankings.",
+    "File fingerprints are taken after evaluation; files must remain unchanged during the run."
+  ]
+}
