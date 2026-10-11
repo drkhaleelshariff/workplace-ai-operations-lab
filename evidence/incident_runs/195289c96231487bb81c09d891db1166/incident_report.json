@@ -1,0 +1,88 @@
+{
+  "incident_id": "195289c96231487bb81c09d891db1166",
+  "exercise_type": "Simulated configuration incident; no deployed service",
+  "environment": {
+    "python": "3.12.10",
+    "platform": "win32"
+  },
+  "change_record": {
+    "baseline": "retrieval_v1.json",
+    "candidate": "retrieval_v2_invalid.json",
+    "changed_setting": "top_k",
+    "before": 2,
+    "after": 0,
+    "baseline_sha256": "7da9e914bb899ae781ddb06801f79f70d67caf9e1d4d883f231560085b41d824",
+    "candidate_sha256": "1fbfd29ffcd992f400ed8ed0ac120d65a6e651b66f923a04c264ed63d5c9a793",
+    "pre_activation_validation": "Deliberately bypassed",
+    "rollback_trigger": "Acceptance check reports INVALID_CONFIGURATION"
+  },
+  "impact": "The lab acceptance check rejected the active configuration before retrieval. No deployed service or users were affected.",
+  "cause": "The candidate set top_k to 0, outside the accepted range of 1–10. The simulation activated it without pre-activation validation.",
+  "recovery": {
+    "acceptance": {
+      "passed": true,
+      "failure": null,
+      "detail": "Expected leave_policy:1 at rank 1.",
+      "top_passage": "leave_policy:1"
+    },
+    "active_bytes_match_baseline": true,
+    "active_sha256": "7da9e914bb899ae781ddb06801f79f70d67caf9e1d4d883f231560085b41d824"
+  },
+  "timeline": [
+    {
+      "timestamp_utc": "2026-10-11T17:08:30.139150+00:00",
+      "action": "baseline_verified",
+      "configuration_sha256": "7da9e914bb899ae781ddb06801f79f70d67caf9e1d4d883f231560085b41d824",
+      "acceptance": {
+        "passed": true,
+        "failure": null,
+        "detail": "Expected leave_policy:1 at rank 1.",
+        "top_passage": "leave_policy:1"
+      }
+    },
+    {
+      "timestamp_utc": "2026-10-11T17:08:30.146152+00:00",
+      "action": "invalid_candidate_activated",
+      "configuration_sha256": "1fbfd29ffcd992f400ed8ed0ac120d65a6e651b66f923a04c264ed63d5c9a793",
+      "validation_bypassed": true
+    },
+    {
+      "timestamp_utc": "2026-10-11T17:08:30.147149+00:00",
+      "action": "failure_detected",
+      "acceptance": {
+        "passed": false,
+        "failure": "INVALID_CONFIGURATION",
+        "detail": "top_k must be an integer from 1 through 10.",
+        "top_passage": null
+      }
+    },
+    {
+      "timestamp_utc": "2026-10-11T17:08:30.152151+00:00",
+      "action": "rollback_applied",
+      "configuration_sha256": "7da9e914bb899ae781ddb06801f79f70d67caf9e1d4d883f231560085b41d824"
+    },
+    {
+      "timestamp_utc": "2026-10-11T17:08:30.157152+00:00",
+      "action": "recovery_verified",
+      "acceptance": {
+        "passed": true,
+        "failure": null,
+        "detail": "Expected leave_policy:1 at rank 1.",
+        "top_passage": "leave_policy:1"
+      },
+      "bytes_match_v1": true
+    }
+  ],
+  "proposed_prevention": [
+    "Validate candidate configuration before activation.",
+    "Run retrieval acceptance checks before and after activation.",
+    "Retain an identified known-good configuration for rollback."
+  ],
+  "limitations": [
+    "One acceptance query; not a full regression suite.",
+    "No service restart, concurrent traffic, or live outage.",
+    "No filesystem failure or rollback failure was injected.",
+    "Prevention actions are proposed, not implemented by this exercise.",
+    "Timeline is saved after completion, not as a durable live journal."
+  ]
+}
