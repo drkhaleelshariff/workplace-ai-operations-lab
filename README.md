@@ -1,111 +1,138 @@
 # Workplace AI Operations Lab
 
-An incremental training lab for investigating workplace AI behavior.
-The current milestone examines retrieval using original synthetic policies.
-Intended audience: engineers and learners investigating retrieval failures.
+A Windows/Python training project investigating retrieval failures,
+evaluation, simulated document permissions, structured logging, and
+configuration rollback using fictional workplace policies.
 
-## Current status
+The integrated pipeline returns retrieved passages. It does not yet
+generate answers with an LLM.
 
-Implemented:
-- Three synthetic workplace policy documents.
-- Sentence retrieval using unique word overlap.
-- Experimental query expansion.
-- Manual evidence review and four additional development checks.
-- Timestamped JSON results and an installed-package snapshot.
+## Start here
 
-Not yet implemented:
-- LLM answer generation or automatic abstention.
-- Authentication, document authorization, or operational monitoring.
-- Incident recovery or deployment.
+Run `06_integrated_pipeline.ipynb` for the combined request path.
+Then run `07_integrated_evaluation.ipynb` and
+`08_integrated_rollback.ipynb` for evaluation and recovery exercises.
 
-This is a training lab. It is not a production AI service.
+In each notebook, select **Kernel → Restart Kernel and Run All Cells**.
+Run notebooks from the repository root.
 
-## Retrieval flow
+## Setup on Windows
 
-Synthetic policy files → sentence passages → token matching →
-ranked passages → manual review.
+Tested environment: Python 3.12.10, JupyterLab 4.6.4, ipykernel 7.4.0.
 
-The baseline scores each passage by unique words shared with the question.
-The expansion variant adds selected vocabulary mappings before scoring.
-Both break score ties using passage IDs.
+From Command Prompt:
 
-## Observed results
+```bat
+git clone https://github.com/drkhaleelshariff/workplace-ai-operations-lab.git
+cd workplace-ai-operations-lab
+py -3.12 -m venv .venv
+.venv\Scripts\activate.bat
+python -m pip install jupyterlab==4.6.4 ipykernel==7.4.0
+python -m jupyterlab
+```
 
-The baseline missed a PTO paraphrase despite a relevant leave policy.
-Query expansion recovered that passage.
+The retrieval module uses Python's standard library.
+No API key or GPU is required for the current exercises.
 
-On four additional development checks:
+The initial retrieval notebook was verified in a separate virtual
+environment in a fresh clone on the same Windows laptop, after
+correcting two rerun blockers. Later notebooks were checked through
+fresh-kernel execution in the original environment.
 
-| Check | Baseline top result | Expanded top result |
+## Integrated request path
+
+Configuration validation → query validation → policy validation →
+role filtering → permitted document reads → passage ranking →
+structured completion log.
+
+`workplace_pipeline.py` implements the shared request function.
+
+| Simulated role | Eligible documents |
+| --- | --- |
+| employee | Three general workplace policies |
+| hr_admin | General policies plus a synthetic restricted HR procedure |
+
+Unknown roles are denied. Roles are caller-supplied inputs, not
+authenticated identities.
+
+## What the experiments demonstrate
+
+- Word overlap can miss an answerable paraphrase.
+- Query expansion can recover one question while degrading another.
+- Related passages may not supply sufficient evidence for an answer.
+- Missing documents are operational errors, distinct from no matches.
+- Document permissions are applied before content reads and ranking.
+- Configuration rollback can restore exact per-case retrieval results.
+
+## Recorded results
+
+Nine development questions include five answerable cases, one of
+which requires a qualified answer, and four abstention-reference cases.
+
+| Retrieval measure | Baseline | Experimental expansion |
 | --- | --- | --- |
-| Leave submission | Correct | Incorrect |
-| Remote approval | Correct | Correct |
-| Lost laptop | Correct | Correct |
-| Bonus question | No result, as expected | Irrelevant leave passage |
+| Supporting passage at rank 1 | 4/5 | 4/5 |
+| Supporting passage within top 2 | 4/5 | 5/5 |
 
-Baseline matched 4/4 references; expansion matched 2/4.
-These counts describe this small development set, not general accuracy.
+The integrated baseline reproduced 4/5 at both ranks.
+Expansion remains experimental.
 
-Decision: retain the original retriever as the baseline and keep
-query expansion experimental.
+Integrated request-path checks verified ten request/log pairs,
+including restricted-content exclusion and explicit failure responses.
 
-## Important findings
+Integrated rollback verified nine baseline requests, nine invalid-
+configuration requests, and nine recovery requests. All nine recovery
+signatures matched baseline; configuration bytes were restored exactly.
 
-- Related text does not necessarily support an answer.
-- A full-time entitlement does not establish contractor entitlement.
-- An unspecified reimbursement amount does not mean zero reimbursement.
-- Empty retrieval can reflect missing information or a retrieval failure.
-- Vocabulary expansion can improve one case while degrading others.
-- Retrieval scores are word counts, not confidence probabilities.
+These are small development experiments, not general performance
+estimates or production reliability measurements.
 
-## Run locally
+## Notebooks and documentation
 
-Observed environment:
-- Windows laptop.
-- Python 3.12.10.
-- JupyterLab 4.6.4.
-- ipykernel 7.4.0.
+| Notebook | Purpose | Details |
+| --- | --- | --- |
+| 00_environment_check.ipynb | Verify interpreter and working directory | This README |
+| 01_retrieval_baseline.ipynb | Investigate word overlap and expansion | EVALUATION.md |
+| 02_evaluation_dataset.ipynb | Create and evaluate development labels | EVALUATION.md |
+| 03_observability_and_failures.ipynb | Log requests and test failure handling | OBSERVABILITY.md |
+| 04_document_access_control.ipynb | Demonstrate two-role filtering | ACCESS_CONTROL.md |
+| 05_incident_and_rollback.ipynb | Simulate an isolated configuration incident | INCIDENT_ROLLBACK.md |
+| 06_integrated_pipeline.ipynb | Exercise the shared request module | INTEGRATED_PIPELINE.md |
+| 07_integrated_evaluation.ipynb | Evaluate the integrated employee path | INTEGRATED_EVALUATION.md |
+| 08_integrated_rollback.ipynb | Verify integrated per-case recovery | INTEGRATED_ROLLBACK.md |
 
-From Command Prompt in a fresh project copy:
+## Evidence and reruns
 
-    py -3.12 -m venv .venv
-    .venv\Scripts\activate.bat
-    python -m pip install jupyterlab==4.6.4 ipykernel==7.4.0
-    python -m jupyterlab
+`data/` contains synthetic documents, access policy, and development labels.
+`config/` contains versioned lab configurations.
+`evidence/` contains reports, request logs, and environment snapshots.
 
-Open 01_retrieval_baseline.ipynb.
-Select Kernel → Restart Kernel and Run All Cells.
-Launch Jupyter from the project root so relative paths resolve correctly.
+Reruns create additional evidence files. Save and close notebook tabs
+before staging files to avoid committing an earlier output snapshot.
 
-On October 11, 2026, the notebook completed successfully in a fresh
-GitHub clone with a separate Python 3.12.10 virtual environment on
-the same Windows laptop, after correcting two rerun blockers:
-a fixed folder-name requirement and a README file-existence check.
-The baseline and expansion comparison remained 4/4 and 2/4.
-This verifies a second environment on the same machine, not
-cross-platform reproducibility.
+Logs exclude query text and retrieved content. Evaluation reports
+include synthetic retrieved passages.
 
-If a document-content mismatch is reported, inspect the existing file
-before changing it. The notebook deliberately avoids overwriting
-different source content.
+If an existing generated file differs from its expected content,
+inspect the difference before replacing or deleting it.
 
-## Files
+## Current limitations
 
-- 00_environment_check.ipynb: interpreter verification.
-- 01_retrieval_baseline.ipynb: data creation and retrieval experiments.
-- data/synthetic/: fictional policies.
-- evidence/: manual reviews, method comparisons, and package snapshots.
+- No LLM, generated answers, or automatic abstention.
+- No authentication or operating-system access enforcement.
+- No held-out evaluation, deployed API, or concurrent-request testing.
+- No timeouts, retries, centralized monitoring, or log rotation.
+- Rollback restores existing retrieval limitations.
+- Some validation branches exist but have not been exercised.
+- Fingerprints and exact-byte checks may differ after Git line-ending
+  conversion; original reports describe the files at measurement time.
 
-Each run creates new timestamped evidence files.
+This is a training lab, not a production-ready AI service.
 
-## Limitations and attribution
+## Attribution and license
 
-The examples and policy text were developed with ChatGPT assistance.
-They contain no client documents or real company policy.
+Code, examples, and documentation were developed with ChatGPT assistance.
+The policies and restricted marker are fictional training material.
+No client documents or real company policies are included.
 
-Reference judgments are manually specified evaluation labels.
-No model-generated answers have been evaluated.
-All examined questions are development examples, not a held-out test set.
-PTO-to-annual-leave mapping is a lab-specific assumption.
-
-Code and materials have not yet been assigned a license.
+No license has been assigned yet.
