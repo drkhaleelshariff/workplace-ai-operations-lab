@@ -1,0 +1,22 @@
+# Python virtual environments
+.venv/
+venv/
+
+# Python caches
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# Jupyter checkpoints
+.ipynb_checkpoints/
+
+# Local environment variables and common credential files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Windows Explorer metadata
+Thumbs.db
+Desktop.ini

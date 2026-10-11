@@ -1,0 +1,8 @@
+SYNTHETIC TRAINING DOCUMENT
+Company: Example Workplace
+Document ID: HR-001
+Title: Annual Leave Policy
+
+Full-time employees receive 20 days of annual leave per calendar year.
+Annual leave requests must be submitted through the employee portal.
+The employee's manager must approve the request before leave begins.

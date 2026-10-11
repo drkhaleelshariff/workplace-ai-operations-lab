@@ -1,0 +1,8 @@
+SYNTHETIC TRAINING DOCUMENT
+Company: Example Workplace
+Document ID: HR-002
+Title: Remote Work Policy
+
+Eligible employees may work remotely up to two days per week.
+The employee's manager must approve the remote work arrangement.
+This policy does not specify reimbursement for home internet expenses.

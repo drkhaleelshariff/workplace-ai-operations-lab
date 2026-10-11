@@ -1,0 +1,8 @@
+SYNTHETIC TRAINING DOCUMENT
+Company: Example Workplace
+Document ID: IT-001
+Title: IT Support Policy
+
+Employees must report lost company laptops to the IT service desk immediately.
+The IT service desk operates Monday through Friday, from 09:00 to 18:00.
+Employees must not share passwords with colleagues or IT support personnel.

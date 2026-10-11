@@ -1,0 +1,236 @@
+{
+  "created_at_utc": "2026-10-11T10:13:23.485315+00:00",
+  "evaluation_type": "Four manually labeled development checks",
+  "top_k": 2,
+  "query_expansions": {
+    "pto": [
+      "annual",
+      "leave"
+    ],
+    "yearly": [
+      "annual"
+    ],
+    "staff": [
+      "employees"
+    ]
+  },
+  "summary": {
+    "baseline": {
+      "matching_checks": 4,
+      "total_checks": 4
+    },
+    "expanded": {
+      "matching_checks": 2,
+      "total_checks": 4
+    }
+  },
+  "results": [
+    {
+      "method": "baseline",
+      "question": "Where should staff submit annual leave requests?",
+      "expected_top_passage": "leave_policy:2",
+      "actual_top_passage": "leave_policy:2",
+      "matches_reference": true,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 3,
+          "matched_words": [
+            "annual",
+            "leave",
+            "requests"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "leave"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "question": "Who approves remote work arrangements?",
+      "expected_top_passage": "remote_work_policy:2",
+      "actual_top_passage": "remote_work_policy:2",
+      "matches_reference": true,
+      "retrieved_passages": [
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:2",
+          "text": "The employee's manager must approve the remote work arrangement.",
+          "score": 2,
+          "matched_words": [
+            "remote",
+            "work"
+          ]
+        },
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:1",
+          "text": "Eligible employees may work remotely up to two days per week.",
+          "score": 1,
+          "matched_words": [
+            "work"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "question": "What should staff do if a company laptop is lost?",
+      "expected_top_passage": "it_support_policy:1",
+      "actual_top_passage": "it_support_policy:1",
+      "matches_reference": true,
+      "retrieved_passages": [
+        {
+          "source": "it_support_policy.txt",
+          "passage_id": "it_support_policy:1",
+          "text": "Employees must report lost company laptops to the IT service desk immediately.",
+          "score": 2,
+          "matched_words": [
+            "company",
+            "lost"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "baseline",
+      "question": "What is the yearly bonus allowance for staff?",
+      "expected_top_passage": null,
+      "actual_top_passage": null,
+      "matches_reference": true,
+      "retrieved_passages": []
+    },
+    {
+      "method": "expanded",
+      "question": "Where should staff submit annual leave requests?",
+      "expected_top_passage": "leave_policy:2",
+      "actual_top_passage": "leave_policy:1",
+      "matches_reference": false,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 3,
+          "matched_words": [
+            "annual",
+            "employees",
+            "leave"
+          ]
+        },
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:2",
+          "text": "Annual leave requests must be submitted through the employee portal.",
+          "score": 3,
+          "matched_words": [
+            "annual",
+            "leave",
+            "requests"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "question": "Who approves remote work arrangements?",
+      "expected_top_passage": "remote_work_policy:2",
+      "actual_top_passage": "remote_work_policy:2",
+      "matches_reference": true,
+      "retrieved_passages": [
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:2",
+          "text": "The employee's manager must approve the remote work arrangement.",
+          "score": 2,
+          "matched_words": [
+            "remote",
+            "work"
+          ]
+        },
+        {
+          "source": "remote_work_policy.txt",
+          "passage_id": "remote_work_policy:1",
+          "text": "Eligible employees may work remotely up to two days per week.",
+          "score": 1,
+          "matched_words": [
+            "work"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "question": "What should staff do if a company laptop is lost?",
+      "expected_top_passage": "it_support_policy:1",
+      "actual_top_passage": "it_support_policy:1",
+      "matches_reference": true,
+      "retrieved_passages": [
+        {
+          "source": "it_support_policy.txt",
+          "passage_id": "it_support_policy:1",
+          "text": "Employees must report lost company laptops to the IT service desk immediately.",
+          "score": 3,
+          "matched_words": [
+            "company",
+            "employees",
+            "lost"
+          ]
+        },
+        {
+          "source": "it_support_policy.txt",
+          "passage_id": "it_support_policy:3",
+          "text": "Employees must not share passwords with colleagues or IT support personnel.",
+          "score": 1,
+          "matched_words": [
+            "employees"
+          ]
+        }
+      ]
+    },
+    {
+      "method": "expanded",
+      "question": "What is the yearly bonus allowance for staff?",
+      "expected_top_passage": null,
+      "actual_top_passage": "leave_policy:1",
+      "matches_reference": false,
+      "retrieved_passages": [
+        {
+          "source": "leave_policy.txt",
+          "passage_id": "leave_policy:1",
+          "text": "Full-time employees receive 20 days of annual leave per calendar year.",
+          "score": 2,
+          "matched_words": [
+            "annual",
+            "employees"
+          ]
+        },
+        {
+          "source": "it_support_policy.txt",
+          "passage_id": "it_support_policy:1",
+          "text": "Employees must report lost company laptops to the IT service desk immediately.",
+          "score": 1,
+          "matched_words": [
+            "employees"
+          ]
+        }
+      ]
+    }
+  ],
+  "decision": "Retain the original retriever as the baseline. Keep query expansion experimental because these checks exposed ranking and irrelevant-match regressions.",
+  "limitations": [
+    "Small development set; not a held-out evaluation.",
+    "Measures top-passage matching, including expected no-result cases.",
+    "Does not measure generated-answer correctness."
+  ]
+}
