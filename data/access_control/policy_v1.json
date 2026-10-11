@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0",
+  "identity_mode": "simulated role input; no authentication",
+  "roles": [
+    "employee",
+    "hr_admin"
+  ],
+  "documents": [
+    {
+      "id": "HR-001",
+      "path": "data/synthetic/leave_policy.txt",
+      "allowed_roles": [
+        "employee",
+        "hr_admin"
+      ]
+    },
+    {
+      "id": "HR-002",
+      "path": "data/synthetic/remote_work_policy.txt",
+      "allowed_roles": [
+        "employee",
+        "hr_admin"
+      ]
+    },
+    {
+      "id": "IT-001",
+      "path": "data/synthetic/it_support_policy.txt",
+      "allowed_roles": [
+        "employee",
+        "hr_admin"
+      ]
+    },
+    {
+      "id": "HR-RESTRICTED-001",
+      "path": "data/access_control/restricted/hr_review_policy.txt",
+      "allowed_roles": [
+        "hr_admin"
+      ]
+    }
+  ]
+}

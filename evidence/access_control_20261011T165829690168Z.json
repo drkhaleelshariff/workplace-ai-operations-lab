@@ -1,0 +1,50 @@
+{
+  "created_at_utc": "2026-10-11T16:58:29.690168+00:00",
+  "identity_mode": "simulated role input; no authentication",
+  "policy_sha256": "c1f201b076628a574905698153586aadc0727a704527f27031bcf29ed1fdc5e0",
+  "restricted_document_sha256": "efd6f8c5b309e4ce5106f2337a00592f9b73e7c0730ad495afa7b6b419eec4fa",
+  "employee": {
+    "read_document_ids": [
+      "HR-001",
+      "HR-002",
+      "IT-001"
+    ],
+    "results": [],
+    "intercepted_read_paths": [
+      "data\\access_control\\policy_v1.json",
+      "data\\synthetic\\leave_policy.txt",
+      "data\\synthetic\\remote_work_policy.txt",
+      "data\\synthetic\\it_support_policy.txt"
+    ],
+    "restricted_read_attempted": false
+  },
+  "hr_admin": {
+    "read_document_ids": [
+      "HR-001",
+      "HR-002",
+      "IT-001",
+      "HR-RESTRICTED-001"
+    ],
+    "results": [
+      {
+        "document_id": "HR-RESTRICTED-001",
+        "passage_id": "HR-RESTRICTED-001:1",
+        "text": "The internal HR review procedure uses the reference code HR-REVIEW-742.",
+        "score": 6
+      },
+      {
+        "document_id": "HR-RESTRICTED-001",
+        "passage_id": "HR-RESTRICTED-001:2",
+        "text": "HR administrators must record review decisions in the restricted HR register.",
+        "score": 2
+      }
+    ]
+  },
+  "limitations": [
+    "Roles are supplied by the caller, not authenticated.",
+    "Checks exercise this notebook loader and retrieval path.",
+    "Read interception covers Path.read_text calls.",
+    "No operating-system permissions or shared caches were tested.",
+    "Restricted content is synthetic and intended for public publication."
+  ]
+}

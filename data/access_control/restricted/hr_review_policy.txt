@@ -1,0 +1,7 @@
+SYNTHETIC TRAINING DOCUMENT
+Company: Example Workplace
+Document ID: HR-RESTRICTED-001
+Title: Internal HR Review Procedure
+
+The internal HR review procedure uses the reference code HR-REVIEW-742.
+HR administrators must record review decisions in the restricted HR register.
