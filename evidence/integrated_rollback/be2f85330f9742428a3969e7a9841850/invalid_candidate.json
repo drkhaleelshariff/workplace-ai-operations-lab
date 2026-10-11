@@ -1,0 +1,6 @@
+{
+  "schema_version": "1.0",
+  "version": "invalid-test",
+  "policy_path": "data/access_control/policy_v1.json",
+  "top_k": 0
+}
